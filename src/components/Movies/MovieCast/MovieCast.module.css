@@ -1,0 +1,29 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.castItem {
+  width: 150px;
+  text-align: center;
+}
+
+.castImg {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.castName {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.castCharacter {
+  font-size: 14px;
+  color: #555;
+}

@@ -62,7 +62,13 @@ export const getMovieReviews = async (movieInD) => {
 
 export const getMoviesByQuery = async (query) => {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/search/movie/${query}`
+    `https://api.themoviedb.org/3/search/movie?query=${query}`,
+    {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmRhZDhhYzYzNjY3MjVlODJlNWQ1YjY0YzIxOTc5YiIsIm5iZiI6MTc0OTQ3NTQ3OS4wNSwic3ViIjoiNjg0NmUwOTc4MGFkMzAxMTk2MjkyZmU0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.RAnm3ESV8DUxFqvKK9WsubBFb2DOGEMSPRqtEFVq5C4",
+      },
+    }
   );
   return data.results;
 };

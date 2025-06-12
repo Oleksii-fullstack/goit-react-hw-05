@@ -1,29 +1,25 @@
 import { Link, useLocation } from "react-router-dom";
-import Grid from "../../Grid/Grid";
-import GridItem from "../../GridItem/GridItem";
+import css from "./MovieList.module.css";
 
 const MovieList = ({ movies }) => {
   const location = useLocation();
   return (
-    <Grid>
-      {movies.map((movie) => {
-        return (
-          <GridItem key={movie.id}>
-            <Link state={location} to={`/movies/${movie.id}`}>
-              {/* <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              /> */}
-              <h2>{movie.original_title}</h2>
-              {/* <p>User score: {Math.round((movie.popularity / 10) * 100)}%</p> */}
-              {/* <span>Overview</span>
-              <p>{movie.overview}</p> */}
-              {/* <span>Genres {movie.genre_ids}</span> */}
+    <div className={css.wrapper}>
+      <h2 className={css.heading}>Trending today</h2>
+      <ul className={css.list}>
+        {movies.map((movie) => (
+          <li key={movie.id} className={css.item}>
+            <Link
+              to={`/movies/${movie.id}`}
+              state={location}
+              className={css.link}
+            >
+              {movie.original_title}
             </Link>
-          </GridItem>
-        );
-      })}
-    </Grid>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

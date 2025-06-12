@@ -6,6 +6,7 @@ import Section from "../../Section/Section";
 import Container from "../../Container/Container";
 import Loader from "../../Loader/Loader";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import styles from "./MovieCast.module.css";
 
 const MovieCast = () => {
   const { movieId } = useParams();
@@ -18,7 +19,7 @@ const MovieCast = () => {
       setLoading(true);
       try {
         const data = await getMovieCast(movieId);
-        // console.log(data);
+        console.log(data);
         setMovieCast(data);
       } catch (error) {
         setError(error.message);
@@ -33,16 +34,21 @@ const MovieCast = () => {
     <Section>
       <Container>
         {movieCast?.length ? (
-          <ul>
+          <ul className={styles.castList}>
             {movieCast.map((actor) => {
-              <li key={actor.id}>
-                <img
-                  src={`https://api.themoviedb.org/3/movie${actor.profile_path}/credits`}
-                  alt={actor.original_name}
-                />
-                <span>{actor.original_name}</span>
-                <span>Character: {actor.character}</span>
-              </li>;
+              return (
+                <li className={styles.castItem} key={actor.id}>
+                  <img
+                    className={styles.castImg}
+                    src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                    alt={actor.original_name}
+                  />
+                  <p className={styles.castName}>{actor.original_name}</p>
+                  <p className={styles.castCharacter}>
+                    Character: {actor.character}
+                  </p>
+                </li>
+              );
             })}
           </ul>
         ) : (

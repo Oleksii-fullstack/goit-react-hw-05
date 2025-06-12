@@ -5,6 +5,7 @@ import Section from "../../Section/Section.jsx";
 import Container from "../../Container/Container";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 import Loader from "../../Loader/Loader.jsx";
+import styles from "./MovieReviews.module.css";
 
 const MovieReviews = () => {
   const { movieId } = useParams();
@@ -32,12 +33,14 @@ const MovieReviews = () => {
     <Section>
       <Container>
         {movieReviews?.length ? (
-          <ul>
+          <ul className={styles.reviewsList}>
             {movieReviews.map((review) => {
-              <li key={review.id}>
-                <span>Author: {review.author}</span>
-                <p>{review.content}</p>
-              </li>;
+              return (
+                <li className={styles.reviewItem} key={review.id}>
+                  <p className={styles.reviewAuthor}>Author: {review.author}</p>
+                  <p>{review.content}</p>
+                </li>
+              );
             })}
           </ul>
         ) : (
