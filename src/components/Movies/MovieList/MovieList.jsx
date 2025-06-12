@@ -5,7 +5,6 @@ const MovieList = ({ movies }) => {
   const location = useLocation();
   return (
     <div className={css.wrapper}>
-      <h2 className={css.heading}>Trending today</h2>
       <ul className={css.list}>
         {movies.map((movie) => (
           <li key={movie.id} className={css.item}>

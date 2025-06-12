@@ -7,7 +7,7 @@ import Section from "../components/Section/Section";
 import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import MovieInfo from "../components/Movies/MovieInfo/MovieInfo";
-import s from "./MovieDetailsPage.module.css"; // створимо цей файл нижче
+import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();

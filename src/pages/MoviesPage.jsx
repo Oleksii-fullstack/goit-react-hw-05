@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 import { getMoviesByQuery } from "../service/moviedbAPI";
+import { FiSearch } from "react-icons/fi";
 import Section from "../components/Section/Section";
 import Container from "../components/Container/Container";
 import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import MovieList from "../components/Movies/MovieList/MovieList";
+import s from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -43,12 +45,17 @@ const MoviesPage = () => {
   return (
     <Section>
       <Container>
-        <input
-          defaultValue={value}
-          onChange={(e) => {
-            setSearchParams({ query: e.target.value });
-          }}
-        />
+        <div className={s.searchWrapper}>
+          <input
+            className={s.input}
+            placeholder="type here to search film"
+            defaultValue={value}
+            onChange={(e) => {
+              setSearchParams({ query: e.target.value });
+            }}
+          />
+          <FiSearch className={s.searchIcon} size="18px" />
+        </div>
         {isEmpty && <ErrorMessage />}
         <MovieList movies={movies} />
         {loading && <Loader />}
